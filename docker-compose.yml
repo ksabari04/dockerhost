@@ -9,7 +9,9 @@ services:
     ports:
       - "80:80"  # HTTP
     volumes:
-      - ./carrental:/var/www/html  # Map the entire directory
+      - ./index.html:/var/www/html/index.html
+      - ./script.js:/var/www/html/script.js
+      - ./style.css:/var/www/html/style.css
     depends_on:
       - mysql
     restart: always
