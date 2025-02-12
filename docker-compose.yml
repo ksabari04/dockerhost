@@ -10,8 +10,7 @@ services:
       - "80:80"  # HTTP
     volumes:
       - ./index.html:/var/www/html/index.html
-      - ./script.js:/var/www/html/script.js
-      - ./style.css:/var/www/html/style.css
+      - ./connect.php:/var/www/html/connect.php
     depends_on:
       - mysql
     restart: always
