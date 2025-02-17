@@ -6,7 +6,6 @@
     <title>Database Connection</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Styles -->
     <style>
         body {
             background: linear-gradient(135deg, #00c6ff, #0072ff);
@@ -55,23 +54,32 @@
 <div class="container">
     <h2>Database Connection Status</h2>
     <?php
+    // Enable error reporting
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+
+    // Enable detailed MySQLi error reporting
+    mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
     $servername = "mysql"; // Replace with your database server name
     $username = "sabarivasan"; // Replace with your database username
     $password = "S@03112004"; // Replace with your database password
     $dbname = "mydb"; // Replace with your database name
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    try {
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
-    if ($conn->connect_error) {
-        echo '<p class="error">❌ Connection failed: ' . $conn->connect_error . '</p>';
-    } else {
+        // Check connection
         echo '<p class="success">✅ Connection successful!</p>';
+    } catch (Exception $e) {
+        echo '<p class="error">❌ Connection failed: ' . $e->getMessage() . '</p>';
     }
 
     // Close connection
-    $conn->close();
+    if (isset($conn)) {
+        $conn->close();
+    }
     ?>
 
     <a href="index.html" class="btn-home">Go Back to Home</a>
