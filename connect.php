@@ -63,7 +63,7 @@
 
     $servername = "mysql"; // Replace with your database server name
     $username = "sabarivasan"; // Replace with your database username
-    $password = "S@03112004!!"; // Replace with your database password
+    $password = "S@03112004"; // Replace with your database password
     $dbname = "mydb"; // Replace with your database name
 
     try {
